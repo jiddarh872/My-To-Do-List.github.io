@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List App</title>
+
+    <!-- CSS Styling -->
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            margin-top: 5px;
+            background: #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete {
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>My To-Do List</h2>
+
+    <!-- Input and Add Button -->
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+
+    <!-- Task List -->
+    <ul id="taskList"></ul>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function addTask() {
+        let input = document.getElementById("taskInput");
+        let task = input.value;
+
+        if (task === "") {
+            alert("Please enter a task");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.textContent = task;
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.className = "delete";
+
+        deleteBtn.onclick = function () {
+            li.remove();
+        };
+
+        li.appendChild(deleteBtn);
+
+        document.getElementById("taskList").appendChild(li);
+
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
